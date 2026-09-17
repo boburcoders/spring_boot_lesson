@@ -1,4 +1,4 @@
-package uz.uzcard.notification_service;
+package uz.uzcard.notification_service.dto;
 
 public class UserUpdateDto {
     public String username;

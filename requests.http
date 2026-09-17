@@ -1,0 +1,17 @@
+
+POST http://localhost:8181/create-user
+Content-Type: application/json
+
+{
+"username":"creater",
+"firstName":"Nodirbek",
+"lastName":"Toshniyozov",
+"password":"4321"
+}
+
+###
+
+GET http://localhost:8181/user-byId/3
+Content-Type: application/json
+
+

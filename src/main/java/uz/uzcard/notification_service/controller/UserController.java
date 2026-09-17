@@ -1,7 +1,9 @@
 package uz.uzcard.notification_service.controller;
 
 import org.springframework.web.bind.annotation.*;
-import uz.uzcard.notification_service.UserUpdateDto;
+import uz.uzcard.notification_service.dto.UserCreateDto;
+import uz.uzcard.notification_service.dto.UserResponse;
+import uz.uzcard.notification_service.dto.UserUpdateDto;
 import uz.uzcard.notification_service.service.UserService;
 
 @RestController // bu anation bilan belgilangan class Contorller, REST, JSON yoki XML, ResponseBody+Controller
@@ -33,13 +35,14 @@ public class UserController {
      * */
 
     @PostMapping("/create-user") // url path, veriable, param, body
-    public String createUser(@RequestParam String username, @RequestParam String password) {
+    public String createUser(@RequestBody UserCreateDto dto) {
+        userService.createUser(dto);
         return "User Created Successfully";
     }
 
     @GetMapping("/user-byId/{id}") // path veriable
-    public String getUser(@PathVariable("id") Long userId) {
-        return "User retrived successfully with id: " + userId;
+    public UserResponse getUser(@PathVariable("id") Long userId) {
+        return userService.getUserById(userId);
     }
     /*
      * form, username,password, firstname, lastName JSON
